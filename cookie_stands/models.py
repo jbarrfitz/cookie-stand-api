@@ -26,6 +26,9 @@ class CookieStand(models.Model):
             max = self.max_customers_per_hour
 
             cookies_each_hour = [
-                int(random.randomint(min, max)*self.avg_cookies_per_sale)
+                int(random.randint(min, max) * self.avg_cookies_per_sale) for _ in range(14)
             ]
+            self.hourly_sales = cookies_each_hour
+
+        super().save(*args, **kwargs)
 
