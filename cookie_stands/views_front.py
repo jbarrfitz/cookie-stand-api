@@ -11,20 +11,24 @@ class CookieStandListView(LoginRequiredMixin, ListView):
 
 
 class CookieStandDetailView(LoginRequiredMixin, DetailView):
+    context_object_name = "cookie_stand"
     template_name = "cookie_stands/cookie_stand_detail.html"
     model = CookieStand
 
 
 class CookieStandUpdateView(LoginRequiredMixin, UpdateView):
+    context_object_name = "cookie_stand"
     template_name = "cookie_stands/cookie_stand_update.html"
     model = CookieStand
     fields = "__all__"
+    success_url = reverse_lazy("cookie_stand_list")
 
 
 class CookieStandCreateView(LoginRequiredMixin, CreateView):
     template_name = "cookie_stands/cookie_stand_create.html"
     model = CookieStand
     fields = "__all__"
+    success_url = reverse_lazy("cookie_stand_list")
 
 
 class CookieStandDeleteView(LoginRequiredMixin, DeleteView):
