@@ -8,11 +8,18 @@ from .serializers import CookieStandSerializer
 
 
 class CookieStandList(ListCreateAPIView):
-    queryset = CookieStand.objects.all()
+    def get_queryset(self):
+        queryset = CookieStand.objects.filter(owner_id=self.request.user.id)
+        return queryset
+
     serializer_class = CookieStandSerializer
 
 
 class CookieStandDetail(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
-    queryset = CookieStand.objects.all()
+
+    def get_queryset(self):
+        queryset = CookieStand.objects.filter(owner_id=self.request.user.id)
+        return queryset
+
     serializer_class = CookieStandSerializer

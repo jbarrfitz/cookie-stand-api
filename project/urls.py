@@ -21,7 +21,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/cookie_stands/", include("cookie_stands.urls")),
+    path("api/v1/cookie-stands/", include("cookie_stands.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path(
         "api/token/",
